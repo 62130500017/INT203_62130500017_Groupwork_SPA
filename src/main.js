@@ -2,5 +2,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/tailwind.css'
 import "@/assets/styles/main.css";
-
-createApp(App).mount('#app')
+import router from './router'
+const vue = createApp(App).use(router);
+vue.mount('#app')
