@@ -37,32 +37,42 @@ export default {
   data() {
     return {
       gallery: [
-        { 
-          picture_name: "รองช้ำ",
-          src: "รองช้ำ.jpg",
-          isFav: false,
-          isPhotoitem: true,
-          isCurrentPhoto: false,
-        },
-        {
-          picture_name: "ไม่บอกเธอ",
-          src: "เกิดมาเพื่ออกหัก.jpg",
-          isFav: false,
-          isPhotoitem: true,
-          isCurrentPhoto: false,
-        },
-        {
-          picture_name: "คลั่งรัก",
-          src: "คลั่งรัก.jpg",
-          isFav: false,
-          isPhotoitem: true,
-          isCurrentPhoto: false,
-        },
+        // { 
+        //   picture_name: "รองช้ำ",
+        //   src: "รองช้ำ.jpg",
+        //   isFav: false,
+        //   isPhotoitem: true,
+        //   isCurrentPhoto: false,
+        // },
+        // {
+        //   picture_name: "ไม่บอกเธอ",
+        //   src: "เกิดมาเพื่ออกหัก.jpg",
+        //   isFav: false,
+        //   isPhotoitem: true,
+        //   isCurrentPhoto: false,
+        // },
+        // {
+        //   picture_name: "คลั่งรัก",
+        //   src: "คลั่งรัก.jpg",
+        //   isFav: false,
+        //   isPhotoitem: true,
+        //   isCurrentPhoto: false,
+        // },
       ],
       photo_zoom: false,
+      
     };
   },
   methods: {
+    async fetchSongs(){
+      try {
+        const res = await fetch('http://localhost:3000/gallery')
+        const data = await res.json()
+        return data
+      } catch (error) {
+        console.log(error)
+      }
+    },
     toggleFav(index) {
       this.gallery[index].isFav = !this.gallery[index].isFav;
     },
@@ -92,6 +102,9 @@ export default {
         this.gallery[i].isPhotoitem = true;
       }
     },
+  },
+  async created(){
+       this.gallery = await this.fetchSongs()
   },
   computed: {
     countUndone() {

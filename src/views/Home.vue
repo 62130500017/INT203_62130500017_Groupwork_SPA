@@ -10,7 +10,7 @@
     </nav>
     <div class="w-full flex justify-center mt-64">
       <router-link to="/your_gallery">
-        <base-button label="Go to Your Gallery"></base-button>
+        <base-button label="Go to Your Gallery >>>"></base-button>
       </router-link>
     </div>
 </template>
