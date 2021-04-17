@@ -6,9 +6,14 @@
         alt="Music_logo"
       />
       <router-link to="/" class="text-white">Home</router-link> |
-      <router-link to="/about" class="text-white">About</router-link>
+      <router-link to="/your_gallery" class="text-white">Your Gallery</router-link>
       <Photosearch @toggle-search="toggleSearch" @toggle-cancel="toggleReset" @search-photo-items="searchPhotoItems"/>
-    <p class="text-white font-semibold text-xl pl-32 absolute right-5">Music Gallery ({{countUndone}})</p> 
+      <div id="edit-button" class="pl-72">
+      <router-link to="/edit_gallery">
+       <base-button label="Edit Your Gallery"></base-button>
+      </router-link>
+      </div>
+    <p class="text-white font-semibold text-xl pl-32 absolute right-5">Favorite Music ({{countUndone}})</p> 
     </nav>
     <div class="bg-gray-800 w-full h-screen">
     <Photoitem :gallery="gallery" @toggle-fav="toggleFav" @toggle-zoom="toggleZoom"/>
