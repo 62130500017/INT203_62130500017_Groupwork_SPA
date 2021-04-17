@@ -8,7 +8,7 @@
       <router-link to="/" class="text-white">Home</router-link> |
       <router-link to="/your_gallery" class="text-white">Your Gallery</router-link>
       <Photosearch @toggle-search="toggleSearch" @toggle-cancel="toggleReset" @search-photo-items="searchPhotoItems"/>
-      <div id="edit-button" class="pl-72">
+      <div id="edit-button" class="pl-52">
       <router-link to="/edit_gallery">
        <base-button label="Edit Your Gallery"></base-button>
       </router-link>
