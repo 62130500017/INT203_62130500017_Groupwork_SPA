@@ -10,13 +10,13 @@
       <Photosearch @toggle-search="toggleSearch" @toggle-cancel="toggleReset" @search-photo-items="searchPhotoItems"/>
       <div id="edit-button" class="pl-52">
       <router-link to="/edit_gallery">
-       <base-button label="Edit Your Gallery"></base-button>
+       <base-button label="Add Your Music"></base-button>
       </router-link>
       </div>
     <p class="text-white font-semibold text-xl pl-32 absolute right-5">Favorite Music ({{countUndone}})</p> 
     </nav>
     <div class="bg-gray-800 w-full h-screen">
-    <Photoitem :gallery="gallery" @toggle-fav="toggleFav" @toggle-zoom="toggleZoom"/>
+    <Photoitem :gallery="gallery" @toggle-fav="toggleFav" @toggle-zoom="toggleZoom"  @delete-song="deleteSong"/>
     <div class="text-white text-xl font-bold p-5" v-if="filterNoFound == gallery.length">
       No Music  :(
     </div>
@@ -72,6 +72,14 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    async deleteSong(id) {
+      const res = await fetch(`http://localhost:3000/gallery/${id}`, {
+        method: "DELETE",
+      });
+      res.status === 200
+        ? (this.gallery = this.gallery.filter((gallery) => gallery.id !== id))
+        : alert("Error to delete song");
     },
     toggleFav(index) {
       this.gallery[index].isFav = !this.gallery[index].isFav;

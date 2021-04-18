@@ -11,6 +11,9 @@
             <i v-show="pic.isFav" class="material-icons text-pink-600 text-2xl cursor-pointer" v-on:click="toggleFav(index)">
             favorite
             </i>
+            <i class="material-icons text-red-500 cursor-pointer" v-on:click="deleteSong(pic.id)">
+            delete
+            </i>
             </div>
         </div>
         </div>
@@ -36,6 +39,9 @@ export default {
         toggleZoom(index) {
             this.$emit('toggle-zoom',index)
         },
+        deleteSong(id){
+            this.$emit('delete-song',id)
+        }
     }
 }
 </script>
