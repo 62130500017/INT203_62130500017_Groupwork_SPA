@@ -9,14 +9,14 @@
       <router-link to="/your_gallery" class="text-white">Your Gallery</router-link>
       <Photosearch @toggle-search="toggleSearch" @toggle-cancel="toggleReset" @search-photo-items="searchPhotoItems"/>
       <div id="edit-button" class="pl-52">
-      <router-link to="/edit_gallery">
+      <router-link to="/add_gallery">
        <base-button label="Add Your Music"></base-button>
       </router-link>
       </div>
     <p class="text-white font-semibold text-xl pl-32 absolute right-5">Favorite Music ({{countUndone}})</p> 
     </nav>
     <div class="bg-gray-800 w-full h-screen">
-    <Photoitem :gallery="gallery" @toggle-fav="toggleFav" @toggle-zoom="toggleZoom"  @delete-song="deleteSong"/>
+    <Photoitem :gallery="gallery" @edit-fav="editFav" @toggle-zoom="toggleZoom"  @delete-song="deleteSong"/>
     <div class="text-white text-xl font-bold p-5" v-if="filterNoFound == gallery.length">
       No Music  :(
     </div>
@@ -81,9 +81,29 @@ export default {
         ? (this.gallery = this.gallery.filter((gallery) => gallery.id !== id))
         : alert("Error to delete song");
     },
-    toggleFav(index) {
-      this.gallery[index].isFav = !this.gallery[index].isFav;
+    async editFav(pic) {
+    pic.isFav = !pic.isFav
+      try {
+        await fetch(`http://localhost:3000/gallery/${pic.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            picture_name: pic.picture_name,
+            src: pic.src,
+            isFav: pic.isFav,
+            isPhotoitem: true,
+            isCurrentPhoto: false,
+          }),
+        });
+      } catch (error) {
+        console.log(error)
+      }
     },
+    // toggleFav(index) {
+    //   this.gallery[index].isFav = !this.gallery[index].isFav;
+    // },
     searchPhotoItems(textinput) {
       for (let i = 0; i < this.gallery.length; i++) {
         if (

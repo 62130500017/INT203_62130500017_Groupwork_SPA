@@ -16,9 +16,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/your_gallery.vue')
   },
   {
-    path: '/edit_gallery',
-    name: 'Edit Gallery',
-    component: () => import('../views/edit_gallery.vue')
+    path: '/add_gallery',
+    name: 'Add Gallery',
+    component: () => import('../views/add_gallery.vue')
   }
 ]
 

@@ -29,7 +29,7 @@
       Failed to add!!
     </div>
     <label class="text-white text-lg">image src:</label><br />
-    <input v-model="song.src" type="text" id="songsrc" name="songsrc" /><br />
+    <input v-model="song.src" type="text" id="songsrc" name="songsrc" placeholder="ex: [ชื่อเพลง].jpg"/><br />
 
     <div class="text-red-500 text-lg font-base" v-if="invalidSrcSong">
       Failed to add!!
@@ -92,28 +92,6 @@ export default {
         console.log(`Failed to add song! + ${error}`);
       }
     },
-    // async editSubmit(id) {
-    //   const res = await fetch(`http://localhost:3000/gallery/${id}`, {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content‐type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       picture_name: song.picture_name,
-    //       src: song.src,
-    //     }),
-    //   });
-    //   const data = await res.json();
-    //   this.photos = this.photos.map((photo) =>
-    //     photo.id === data.id
-    //       ? {
-    //           ...photo,
-    //           title: data.title,
-    //           src: data.src,
-    //         }
-    //       : photo
-    //   );
-    // },
   },
 };
 </script>

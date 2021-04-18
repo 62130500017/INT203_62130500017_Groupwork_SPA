@@ -1,28 +1,28 @@
 {
   "gallery": [
     {
-      "id": 1,
       "picture_name": "รองช้ำ",
       "src": "รองช้ำ.jpg",
-      "isFav": false,
+      "isFav": true,
       "isPhotoitem": true,
-      "isCurrentPhoto": false
+      "isCurrentPhoto": false,
+      "id": 1
     },
     {
-      "id": 2,
       "picture_name": "ไม่บอกเธอ",
       "src": "เกิดมาเพื่ออกหัก.jpg",
-      "isFav": false,
+      "isFav": true,
       "isPhotoitem": true,
-      "isCurrentPhoto": false
+      "isCurrentPhoto": false,
+      "id": 2
     },
     {
-      "id": 3,
       "picture_name": "คลั่งรัก",
       "src": "คลั่งรัก.jpg",
-      "isFav": false,
+      "isFav": true,
       "isPhotoitem": true,
-      "isCurrentPhoto": false
+      "isCurrentPhoto": false,
+      "id": 3
     }
   ]
 }
