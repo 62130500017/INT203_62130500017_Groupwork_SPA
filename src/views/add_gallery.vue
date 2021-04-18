@@ -1,22 +1,5 @@
 <template>
-  <nav
-    class="flex flex-wrap items-center p-5 bg-black h-20 space-x-6 font-medium text-base"
-  >
-    <img
-      class="w-8"
-      :src="require('../assets/Images/music_logo.svg')"
-      alt="Music_logo"
-    />
-    <router-link to="/" class="text-white">Home</router-link> |
-    <router-link to="/your_gallery" class="text-white"
-      >Your Gallery</router-link
-    >
-    <Photosearch
-      @toggle-search="toggleSearch"
-      @toggle-cancel="toggleReset"
-      @search-photo-items="searchPhotoItems"
-    />
-  </nav>
+  <nav-bar></nav-bar>
   <form @submit.prevent="submitForm">
     <label class="text-white text-lg">Song title:</label><br />
     <input
@@ -42,12 +25,8 @@
   </form>
 </template>
 <script>
-import Photosearch from "../components/Photosearch";
 export default {
   name: "App",
-  components: {
-    Photosearch,
-  },
   data() {
     return {
       song: { title: "", src: "" },

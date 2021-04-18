@@ -1,20 +1,13 @@
 <template>
-    <nav class="flex flex-wrap items-center p-5 bg-black h-20 space-x-6 font-medium text-base">
-      <img
-        class="w-8"
-        :src="require('../assets/Images/music_logo.svg')"
-        alt="Music_logo"
-      />
-      <router-link to="/" class="text-white">Home</router-link> |
-      <router-link to="/your_gallery" class="text-white">Your Gallery</router-link>
+    <nav-bar>
       <Photosearch @toggle-search="toggleSearch" @toggle-cancel="toggleReset" @search-photo-items="searchPhotoItems"/>
-      <div id="edit-button" class="pl-52">
-      <router-link to="/add_gallery">
-       <base-button label="Add Your Music"></base-button>
-      </router-link>
-      </div>
-    <p class="text-white font-semibold text-xl pl-32 absolute right-5">Favorite Music ({{countUndone}})</p> 
-    </nav>
+          <div id="edit-button" class="pl-52">
+            <router-link to="/add_gallery">
+              <base-button label="Add Your Music"></base-button>
+            </router-link>
+          </div>
+          <p class="text-white font-semibold text-xl pl-32 absolute right-5">Favorite Music ({{countUndone}})</p> 
+    </nav-bar>
     <div class="bg-gray-800 w-full h-screen">
     <Photoitem :gallery="gallery" @edit-fav="editFav" @toggle-zoom="toggleZoom"  @delete-song="deleteSong"/>
     <div class="text-white text-xl font-bold p-5" v-if="filterNoFound == gallery.length">
@@ -32,7 +25,7 @@ export default {
   components: {
     Photosearch,
     Photoitem,
-    Photoview
+    Photoview,
   },
   data() {
     return {
